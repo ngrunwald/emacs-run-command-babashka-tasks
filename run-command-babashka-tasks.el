@@ -1,4 +1,4 @@
-;;; run-command-clojure-deps.el --- Run clojure commands from deps.edn files. -*- lexical-binding: t; -*-
+;;; run-command-babashka-tasks.el --- Run babashka tasks from bb.edn files. -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2021 Nils Grunwald <github.com/ngrunwald>
 ;; Author: Nils Grunwald
@@ -51,7 +51,7 @@
                              base)))
              lines)))
 
-(defun run-command-recipe-babashka-tasks ()
+(defun run-command-recipe-babashka-task ()
   (when (executable-find "bb")
     (when-let ((bb-dir (locate-dominating-file default-directory "bb.edn")))
       (let ((default-directory bb-dir))
@@ -62,7 +62,7 @@
   "Register recipes fr handling bb.edn files."
   (interactive)
   (with-eval-after-load 'run-command
-    (add-to-list 'run-command-recipes 'run-command-recipe-babashka-tasks)))
+    (add-to-list 'run-command-recipes 'run-command-recipe-babashka-task)))
 
 (provide 'run-command-babashka-tasks)
 ;;; run-command-babashka-tasks.el ends here
